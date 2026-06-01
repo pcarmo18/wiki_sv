@@ -882,20 +882,6 @@ const WIKI_DATA = {
                         <li><strong>Sinal de Excelência:</strong> De <code>-15 dBm</code> a <code>-22 dBm</code>. Sinal perfeito, velocidade máxima estável.</li>
                         <li><strong>Sinal Crítico:</strong> <code>-26 dBm</code> ou mais fraco (ex: <code>-28 dBm</code>). Causa lentidão fantasma, quedas de pacotes de dados e oscilações constantes da internet.</li>
                     </ul>
-
-                    <h3>3. Links e Referências de Estudo Externo</h3>
-                    <p>Se você quer se aprofundar e entender na prática o funcionamento técnico, acesse os materiais de estudo recomendados abaixo:</p>
-                    
-                    <div class="alert-box alert-box--success">
-                        <strong style="color: var(--white) !important;">Referências Úteis para Leitura e Estudo:</strong>
-                        <ul style="margin: 0.5rem 0 0 1rem; padding: 0;">
-                            <li><a href="https://www.teleco.com.br/gpon.asp" target="_blank" rel="noopener noreferrer" style="color: var(--sv-red); font-weight: bold; text-decoration: underline;">Teleco: Tutorial de Redes GPON</a> — Artigo detalhado de referência sobre a tecnologia GPON no Brasil.</li>
-                            <li><a href="https://www.youtube.com/watch?v=fg-BQT0WI_Q" target="_blank" rel="noopener noreferrer" style="color: var(--sv-red); font-weight: bold; text-decoration: underline;">YouTube: Instalação fibra — da caixa (NAP) ao cliente</a> — Visão prática da rede até o imóvel (PT-BR).</li>
-                            <li><a href="https://www.youtube.com/watch?v=8WFfpocZatk" target="_blank" rel="noopener noreferrer" style="color: var(--sv-red); font-weight: bold; text-decoration: underline;">YouTube: OLT, ONU e provisionamento (FiberHome)</a> — Equipamentos de provedor explicados em português.</li>
-                            <li><a href="https://www.youtube.com/watch?v=vSMqhBrbics" target="_blank" rel="noopener noreferrer" style="color: var(--sv-red); font-weight: bold; text-decoration: underline;">YouTube: ONT Huawei — funções e configuração</a> — Diferença entre modem óptico e roteador.</li>
-                            <li><a href="https://www.youtube.com/watch?v=TNQsmPf24go" target="_blank" rel="noopener noreferrer" style="color: var(--sv-red); font-weight: bold; text-decoration: underline;">YouTube: Como a internet funciona (Vox)</a> — Conceitos gerais de rede (legendado EN).</li>
-                        </ul>
-                    </div>
                 `
             },
             {
