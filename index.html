@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wiki de Processos Internos e Trilha de Aprendizado — SV Internet. Guia completo para uso do sistema Hubsoft.">
+    <meta name="theme-color" content="#690a0d">
+    <link rel="icon" href="assets/favicon.jpeg" type="image/jpeg">
+    <link rel="shortcut icon" href="assets/favicon.jpeg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="assets/favicon.jpeg">
+    <title>Portal do Colaborador — SV Internet</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        svRed: '#e81b26',
+                        svRedHover: '#c21720',
+                        svNav: '#690a0d',
+                        svDark: '#640809',
+                        svSoft: '#fdf0f1',
+                        svCream: '#faf9f7',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Ir para o conteúdo</a>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a href="#" class="site-header__brand" data-view-nav="home">
+                <img
+                    src="assets/logo-sv-branca.png"
+                    alt="SV Internet — conectando sua vida"
+                    width="180"
+                    height="48"
+                    class="site-header__logo site-header__logo--brand"
+                    decoding="async"
+                >
+                <div class="site-header__titles">
+                    <p class="site-header__kicker">Wiki de Processos</p>
+                    <p class="site-header__name">Portal do Colaborador</p>
+                </div>
+            </a>
+
+            <!-- Desktop & Mobile Navigation Links -->
+            <nav class="site-nav" aria-label="Navegação do Portal">
+                <a class="is-active" data-view-nav="home">Início</a>
+                <a data-view-nav="onboarding">Trilha do Zero</a>
+                <a onclick="window.app.navigateToWiki('comercial')">Comercial</a>
+                <a onclick="window.app.navigateToWiki('tecnico')">Técnico</a>
+                <a onclick="window.app.navigateToWiki('financeiro')">Financeiro</a>
+                <a onclick="window.app.navigateToWiki('geral')">Geral</a>
+            </nav>
+
+            <!-- External Login CTA -->
+            <a href="https://wiki.hubsoft.com.br/" class="site-header__cta" target="_blank" rel="noopener noreferrer">
+                Wiki Oficial Hubsoft
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="main-wrapper">
+
+        <!-- ==================== VIEW 1: HOME/DASHBOARD ==================== -->
+        <section id="view-home" class="app-view is-active" aria-labelledby="home-title">
+            
+            <!-- Hero Banner -->
+            <div class="hero">
+                <div class="hero__pattern" aria-hidden="true"></div>
+                <div class="hero__glow" aria-hidden="true"></div>
+                <div class="hero__inner">
+                    <span class="hero__badge">SV Internet · Portal Interno</span>
+                    <h1 id="home-title" class="hero__title font-display">
+                        Conectando processos, <em>facilitando rotinas</em>.
+                    </h1>
+                    <p class="hero__lead">
+                        Central oficial de treinamento e documentação da SV Internet. Fluxos por setor, glossário telecom, trilha do zero e links verificados para a <strong>Wiki Hubsoft</strong> e vídeos em português.
+                    </p>
+                    <div class="hero__actions flex gap-3">
+                        <a class="btn btn--white cursor-pointer" data-view-nav="onboarding">Acessar Trilha do Zero</a>
+                        <a onclick="window.app.navigateToWiki('geral', 'geral-glossario')" class="btn btn--ghost cursor-pointer">Ver Glossário Telecom</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Real-time Search Box -->
+            <div class="search-wrapper">
+                <div class="search-input-container">
+                    <svg class="search-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="global-search-input" 
+                        class="search-input" 
+                        placeholder="Busque por processos, termos ou dúvidas (ex: ONU, faturamento, O.S.)..."
+                        aria-label="Buscar processos globais"
+                    >
+                </div>
+                <!-- Dropdown search results -->
+                <div id="search-results-dropdown" class="search-results-box" role="listbox"></div>
+            </div>
+
+            <!-- Sector Grid Cards -->
+            <div class="section-head mt-8">
+                <div class="section-head__title-box">
+                    <span class="section-kicker">Setores & Aprendizado</span>
+                    <h2 class="section-title font-display">Navegue pelos Processos</h2>
+                    <p class="section-intro">Escolha o setor ou a trilha de integração para visualizar a documentação oficial.</p>
+                </div>
+            </div>
+
+            <div class="sectors-grid">
+                <!-- Card Trilha -->
+                <a class="sector-card sector-card--onboarding cursor-pointer" data-view-nav="onboarding">
+                    <div class="sector-card__visual" aria-hidden="true">
+                        <span class="sector-card__glow"></span>
+                        <div class="sector-card__icon-wrapper">
+                            <svg class="sector-card__icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.35" d="M16 4L6 10v14h6v-8h8v8h6V10L16 4z" fill="currentColor"/>
+                                <path d="M16 6.5L8.5 11.5V22h5v-7h7v7h5V11.5L16 6.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                                <path d="M13 22v-6h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="16" cy="13" r="1.75" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>Trilha do Zero</h3>
+                    <p>Onboarding completo para novos colaboradores se adaptarem à cultura SV e às tarefas do Hubsoft nos primeiros dias.</p>
+                    <div class="sector-card__footer">
+                        <span>COMEÇAR AQUI</span>
+                        <span class="sector-card__arrow" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Card Comercial -->
+                <a class="sector-card sector-card--comercial cursor-pointer" onclick="window.app.navigateToWiki('comercial')">
+                    <div class="sector-card__visual" aria-hidden="true">
+                        <span class="sector-card__glow"></span>
+                        <div class="sector-card__icon-wrapper">
+                            <svg class="sector-card__icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.3" d="M4 24c0-6 5.5-11 12-11s12 5 12 11" stroke="currentColor" stroke-width="2"/>
+                                <path d="M8 22c1.5-3.5 5-6 8-6s6.5 2.5 8 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                <circle cx="11" cy="12" r="2.5" stroke="currentColor" stroke-width="1.6"/>
+                                <circle cx="21" cy="12" r="2.5" stroke="currentColor" stroke-width="1.6"/>
+                                <path d="M14.5 12h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                <path d="M16 8v2M11 10.5l1 1.5M21 10.5l-1 1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>Comercial & Vendas</h3>
+                    <p>Curso oficial HubAcademia (recomendado SV), viabilidade no mapa, cadastro, planos e contrato digital.</p>
+                    <div class="sector-card__footer">
+                        <span>5 ARTIGOS</span>
+                        <span class="sector-card__arrow" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Card Técnico -->
+                <a class="sector-card sector-card--tecnico cursor-pointer" onclick="window.app.navigateToWiki('tecnico')">
+                    <div class="sector-card__visual" aria-hidden="true">
+                        <span class="sector-card__glow"></span>
+                        <div class="sector-card__icon-wrapper">
+                            <svg class="sector-card__icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle opacity="0.25" cx="16" cy="16" r="10" fill="currentColor"/>
+                                <circle cx="16" cy="8" r="2.25" fill="currentColor"/>
+                                <circle cx="9" cy="20" r="2.25" fill="currentColor"/>
+                                <circle cx="23" cy="20" r="2.25" fill="currentColor"/>
+                                <path d="M16 10.2v4.3M14.2 18.2l3.6-2.1M17.8 18.2l-3.6-2.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M16 10.2l-5.5 9.5M16 10.2l5.5 9.5" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" opacity="0.55"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>Técnico & Redes</h3>
+                    <p>Vídeo oficial da HubAcademia (recomendado SV), provisionamento de ONUs, leitura de sinal óptico e fluxo de O.S. pelo app.</p>
+                    <div class="sector-card__footer">
+                        <span>4 ARTIGOS</span>
+                        <span class="sector-card__arrow" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Card Financeiro -->
+                <a class="sector-card sector-card--financeiro cursor-pointer" onclick="window.app.navigateToWiki('financeiro')">
+                    <div class="sector-card__visual" aria-hidden="true">
+                        <span class="sector-card__glow"></span>
+                        <div class="sector-card__icon-wrapper">
+                            <svg class="sector-card__icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.28" x="5" y="8" width="22" height="16" rx="3" fill="currentColor"/>
+                                <rect x="5" y="11" width="22" height="13" rx="2.5" stroke="currentColor" stroke-width="1.6"/>
+                                <path d="M5 15h22" stroke="currentColor" stroke-width="1.6"/>
+                                <rect x="8" y="18" width="7" height="2" rx="1" fill="currentColor" opacity="0.85"/>
+                                <circle cx="23" cy="19" r="1.5" fill="currentColor"/>
+                                <path d="M10 8V6.5a2 2 0 012-2h8a2 2 0 012 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>Financeiro & Caixa</h3>
+                    <p>Processos de faturamento, regras para bloqueio por inadimplência, desbloqueio em confiança e conciliação de caixa diário.</p>
+                    <div class="sector-card__footer">
+                        <span>3 ARTIGOS</span>
+                        <span class="sector-card__arrow" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- FAQ Section / Perguntas Gerais dos Colaboradores -->
+            <div class="section-head">
+                <div class="section-head__title-box">
+                    <span class="section-kicker">Suporte Interno</span>
+                    <h2 class="section-title font-display">Perguntas Frequentes (FAQ)</h2>
+                    <p class="section-intro">Dúvidas rápidas de departamento e administração da empresa. Clique para ler.</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button type="button" class="accordion-trigger">
+                        Como faço para solicitar minhas férias ou folga?
+                        <span class="accordion-trigger__icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="accordion-panel">
+                        <p>Todas as solicitações de férias devem ser enviadas ao setor de Recursos Humanos (RH) através do painel interno administrativo com no mínimo <strong>45 dias de antecedência</strong>.</p>
+                        <p>As folgas de plantão técnico de finais de semana seguem a escala mensal fixada no painel físico do Datacenter e acordada previamente com o coordenador técnico.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button type="button" class="accordion-trigger">
+                        Onde posso consultar meu contracheque e informe de rendimentos?
+                        <span class="accordion-trigger__icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="accordion-panel">
+                        <p>A SV Internet disponibiliza os contracheques de forma digital até o 5º dia útil de cada mês no portal do colaborador da contabilidade parceira. O link de acesso e credenciais de primeiro login são fornecidos no e-mail de onboarding enviado pelo RH.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button type="button" class="accordion-trigger">
+                        Esqueci minha senha do Hubsoft ou fui bloqueado. O que fazer?
+                        <span class="accordion-trigger__icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="accordion-panel">
+                        <p>Por questões de segurança e auditoria técnica, após 3 tentativas malsucedidas de login, sua conta administrativa do Hubsoft será temporariamente bloqueada.</p>
+                        <p><strong>Para desbloquear:</strong> abra um chamado interno com a TI através do sistema de tickets do chat da Telia ou envie um e-mail para suporte@svinternet.net.br solicitando o reset de senha. Apenas administradores do sistema podem efetuar o desbloqueio.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button type="button" class="accordion-trigger">
+                        Quais são as regras básicas para o uso dos veículos da SV Internet?
+                        <span class="accordion-trigger__icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="accordion-panel">
+                        <p>Para os colaboradores técnicos de campo que utilizam carros ou motos da empresa, aplicam-se as seguintes regras fundamentais:</p>
+                        <ul>
+                            <li>Realizar o checklist diário de nível de óleo, água e calibragem antes de sair para a rota.</li>
+                            <li>Registrar toda quilometragem de saída e retorno no caderno de bordo do veículo.</li>
+                            <li>Respeitar estritamente as leis de trânsito. Multas por imprudência são de responsabilidade do condutor.</li>
+                            <li>O uso do carro é restrito a fins de trabalho. Não é permitido desviar rotas para fins particulares sem autorização.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== VIEW 2: ONBOARDING / TRILHA DO ZERO ==================== -->
+        <section id="view-onboarding" class="app-view" aria-labelledby="onboarding-title">
+            <div class="section-head">
+                <div class="section-head__title-box">
+                    <span class="section-kicker">Trilha do Zero</span>
+                    <h2 id="onboarding-title" class="section-title font-display">Onboarding de Integração</h2>
+                    <p class="section-intro">Guia passo a passo para novos colaboradores da SV. Complete as etapas para concluir seu treinamento inicial.</p>
+                </div>
+            </div>
+
+            <!-- Progress Tracker Container -->
+            <div class="onboarding-tracker">
+                <div class="onboarding-tracker__header">
+                    <h3 class="onboarding-tracker__title font-display">Seu Progresso de Aprendizado</h3>
+                    <span id="onboarding-progress-stats" class="onboarding-tracker__stats">0 de 0 concluídas (0%)</span>
+                </div>
+                <div class="progress-track">
+                    <div id="onboarding-progress-bar" class="progress-bar"></div>
+                </div>
+
+                <!-- Onboarding Day Selector Tabs -->
+                <div class="onboarding-days-nav mt-6">
+                    <button type="button" class="onboarding-day-tab is-active" data-day-tab="1">Dia 1: Integração e Cultura</button>
+                    <button type="button" class="onboarding-day-tab" data-day-tab="2">Dia 2: Primeiros Passos Hubsoft</button>
+                    <button type="button" class="onboarding-day-tab" data-day-tab="3">Dia 3: Prática do Setor</button>
+                </div>
+
+                <!-- Task Cards List -->
+                <div id="onboarding-tasks-list" class="onboarding-tasks-list">
+                    <!-- Injected via app.js -->
+                </div>
+
+                <!-- Celebration Banner when 100% complete -->
+                <div id="onboarding-celebration" class="celebration-box">
+                    <span class="celebration-icon" role="img" aria-label="Festa e Confete">🎉</span>
+                    <h4 class="font-display text-2xl font-bold text-svNav mb-2">Parabéns! Trilha Concluída!</h4>
+                    <p class="text-sm text-textMuted max-w-md mx-auto">Você completou todos os módulos básicos de onboarding da SV Internet. Agora você está pronto(a) para voar alto junto com a nossa equipe no dia a dia!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== VIEW 3: WIKI DE SETORES ==================== -->
+        <section id="view-wiki" class="app-view" aria-labelledby="wiki-title-screen">
+            <h2 id="wiki-title-screen" class="sr-only">Wiki de Conteúdos por Setor</h2>
+
+            <!-- Mobile Sidebar Toggle -->
+            <button id="wiki-sidebar-toggle" class="wiki-mobile-trigger" type="button" aria-expanded="false" aria-controls="wiki-sidebar-container">
+                <span>Ver Menu de Artigos</span>
+                <span class="font-mono">☰</span>
+            </button>
+
+            <div id="wiki-layout-container" class="wiki-layout">
+                <!-- Left Sidebar Drawer -->
+                <aside id="wiki-sidebar-container" class="wiki-mobile-sidebar-container">
+                    <div class="wiki-sidebar">
+                        <h3 id="wiki-sidebar-title" class="wiki-sidebar__title">Setor Comercial</h3>
+                        <nav aria-label="Artigos deste setor">
+                            <ul id="wiki-menu" class="wiki-menu">
+                                <!-- Injected via app.js -->
+                            </ul>
+                        </nav>
+                    </div>
+                </aside>
+
+                <!-- Right Main Article Panel -->
+                <div id="wiki-article-panel" class="wiki-article-panel">
+                    <!-- Injected via app.js -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <div>
+                <a href="#" data-view-nav="home">
+                    <img 
+                        src="https://svinternet.net.br/public/assets/uploaddir/logo/logo.png" 
+                        alt="SV Internet" 
+                        width="140" 
+                        height="55" 
+                        class="site-footer__logo" 
+                        loading="lazy"
+                    >
+                </a>
+                <p>Conectando sua vida · Porto Seguro — BA</p>
+            </div>
+            <p style="font-size:0.85rem;opacity:0.7">© 2026 SV Internet. Portal de Processos Internos.</p>
+        </div>
+    </footer>
+
+    <!-- App JavaScript -->
+    <script src="js/app.js" defer></script>
+</body>
+</html>
